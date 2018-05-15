@@ -9,8 +9,7 @@ import com.binance.api.client.domain.event.CandlestickEvent;
 import com.binance.api.client.domain.event.DepthEvent;
 import com.binance.api.client.domain.event.UserDataUpdateEvent;
 import com.binance.api.client.domain.market.CandlestickInterval;
-import com.fasterxml.jackson.core.type.TypeReference;
-import okhttp3.Dispatcher;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.WebSocket;
@@ -23,12 +22,10 @@ import java.util.List;
  */
 public class BinanceApiWebSocketClientImpl implements BinanceApiWebSocketClient, Closeable {
 
-    private OkHttpClient client;
+    private final OkHttpClient client;
 
-    public BinanceApiWebSocketClientImpl() {
-        Dispatcher d = new Dispatcher();
-        d.setMaxRequestsPerHost(100);
-        this.client = new OkHttpClient.Builder().dispatcher(d).build();
+    public BinanceApiWebSocketClientImpl(OkHttpClient client) {
+        this.client = client;
     }
 
     public Closeable onDepthEvent(String symbol, BinanceApiCallback<DepthEvent> callback) {
@@ -53,13 +50,14 @@ public class BinanceApiWebSocketClientImpl implements BinanceApiWebSocketClient,
 
     public Closeable onAllMarketTickersEvent(BinanceApiCallback<List<AllMarketTickersEvent>> callback) {
         final String channel = "!ticker@arr";
-        return createNewWebSocket(channel, new BinanceApiWebSocketListener<>(callback, new TypeReference<List<AllMarketTickersEvent>>() {}));
+        return createNewWebSocket(channel, new BinanceApiWebSocketListener<List<AllMarketTickersEvent>>(callback));
     }
 
+    /**
+     * @deprecated This method is no longer functional. Please use the returned {@link Closeable} from any of the other methods to close the web socket.
+     */
     @Override
-    public void close() {
-        client.dispatcher().executorService().shutdown();
-    }
+    public void close() { }
 
     private Closeable createNewWebSocket(String channel, BinanceApiWebSocketListener<?> listener) {
         String streamingUrl = String.format("%s/%s", BinanceApiConstants.WS_API_BASE_URL, channel);
