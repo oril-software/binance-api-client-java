@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+
 /**
  * Represents an executed trade.
  */

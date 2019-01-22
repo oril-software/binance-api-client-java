@@ -16,34 +16,34 @@ import static org.junit.Assert.assertThat;
  */
 public class NewOrderResponseTest {
 
-  private NewOrderResponse newOrderResponse;
-  private Trade trade;
+	private NewOrderResponse newOrderResponse;
+	private Trade trade;
 
-  @Before
-  public void setUp() {
-    newOrderResponse = new NewOrderResponse();
-    trade = new Trade();
-    trade.setId(123L);
-  }
+	@Before
+	public void setUp() {
+		newOrderResponse = new NewOrderResponse();
+		trade = new Trade();
+		trade.setId(123L);
+	}
 
-  @Test
-  public void shouldHandleToStringWithNullFills() {
-    assertThat(newOrderResponse.toString(), containsString(",fills="));
-  }
+	@Test
+	public void shouldHandleToStringWithNullFills() {
+		assertThat(newOrderResponse.toString(), containsString(",fills="));
+	}
 
-  @Test
-  public void shouldHandleToStringWithNoFills() {
-    newOrderResponse.setFills(Collections.emptyList());
-    assertThat(newOrderResponse.toString(), containsString(",fills="));
-  }
+	@Test
+	public void shouldHandleToStringWithNoFills() {
+		newOrderResponse.setFills(Collections.emptyList());
+		assertThat(newOrderResponse.toString(), containsString(",fills="));
+	}
 
-  @Test
-  public void shouldHandleToStringWithFills() {
-    newOrderResponse.setFills(trades(trade));
-    assertThat(newOrderResponse.toString(), containsString(",fills=Trade[id=123,"));
-  }
+	@Test
+	public void shouldHandleToStringWithFills() {
+		newOrderResponse.setFills(trades(trade));
+		assertThat(newOrderResponse.toString(), containsString(",fills=Trade[id=123,"));
+	}
 
-  private static List<Trade> trades(final Trade... trades) {
-    return Arrays.asList(trades);
-  }
+	private static List<Trade> trades(final Trade... trades) {
+		return Arrays.asList(trades);
+	}
 } 
