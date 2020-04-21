@@ -7,11 +7,11 @@
 	<name>Oril-BinanceClient</name>
 	<groupId>co.oril</groupId>
 	<artifactId>binance-api-client-java</artifactId>
+	<description>Binance API Client</description>
 	<version>1.0.1</version>
 
 	<packaging>jar</packaging>
 	<url>https://github.com/oril-software/binance-api-client-java</url>
-	<description/>
 
 	<developers>
 		<developer>
