@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Kline/Candlestick intervals.
- * m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
+ * m = minutes; h = hours; d = days; w = weeks; M = months
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public enum CandlestickInterval {

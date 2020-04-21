@@ -4,9 +4,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<name>Oril-BinanceClient</name>
 	<groupId>co.oril</groupId>
 	<artifactId>binance-api-client-java</artifactId>
 	<version>1.0.1</version>
+
+	<packaging>jar</packaging>
+	<url>https://github.com/oril-software/binance-api-client-java</url>
+	<description/>
+
+	<developers>
+		<developer>
+			<name>Eugenii Samarskyi</name>
+			<email>samgeka@gmail.com</email>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>https://github.com/oril-software/binance-api-client-java</url>
+		<connection>scm:git:git@github.com:oril-software/binance-api-client-java.git</connection>
+		<developerConnection>scm:git:git@github.com:oril-software/binance-api-client-java.git</developerConnection>
+	</scm>
+
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -65,15 +84,61 @@
 					<target>11</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
 	<distributionManagement>
 		<repository>
-			<id>github</id>
-			<name>GitHub OWNER Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/oril-software/binance-api-client-java</url>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
+
+	<!--<distributionManagement>-->
+	<!--<repository>-->
+	<!--<id>github</id>-->
+	<!--<name>GitHub OWNER Apache Maven Packages</name>-->
+	<!--<url>https://maven.pkg.github.com/oril-software/binance-api-client-java</url>-->
+	<!--</repository>-->
+	<!--</distributionManagement>-->
 
 </project>
