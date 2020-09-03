@@ -26,10 +26,6 @@ public class TotalAccountBalanceExample {
         // Get total account balance in USDT (spot only)
         double totalBalanceInUSDT = totalBalanceInBTC * Double.parseDouble(client.getPrice("BTCUSDT").getPrice());
         System.out.println(totalBalanceInUSDT);
-
-
-
-
     }
 
     // Get total account balance in BTC (spot only)
@@ -55,9 +51,6 @@ public class TotalAccountBalanceExample {
         }
 
         return totalBalance;
-
     }
-
-
 
 }
