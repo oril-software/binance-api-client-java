@@ -49,7 +49,7 @@ public interface BinanceApiService {
 	@GET("/api/v1/time")
 	Call<ServerTime> getServerTime();
 
-	@GET("/api/v1/exchangeInfo")
+	@GET("/api/v3/exchangeInfo")
 	Call<ExchangeInfo> getExchangeInfo();
 
 	@GET
@@ -81,7 +81,7 @@ public interface BinanceApiService {
 	@GET("/api/v1/ticker/24hr")
 	Call<List<TickerStatistics>> getAll24HrPriceStatistics();
 
-	@GET("/api/v1/ticker/allPrices")
+	@GET("/api/v3/ticker/price")
 	Call<List<TickerPrice>> getLatestPrices();
 
 	@GET("/api/v3/ticker/price")

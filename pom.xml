@@ -8,7 +8,7 @@
 	<groupId>co.oril</groupId>
 	<artifactId>binance-api-client-java</artifactId>
 	<description>Binance API Client</description>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 
 	<packaging>jar</packaging>
 	<url>https://github.com/oril-software/binance-api-client-java</url>
